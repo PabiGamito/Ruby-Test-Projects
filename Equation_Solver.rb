@@ -1,88 +1,207 @@
-a=18
-b=2
-c=Math.sqrt(a/b)
-puts c*3
-
+#Equation Selecter Need to make it detect equation
 puts "Is your equation a:"
-puts "1) Quadratic under the form ax^2+bx+c=0?"
-puts "2) Linear equation under the form y=ax+b"
-puts "3) Constant equation under the form y=x"
-puts "Please enter the number of the equation you want to solve:"
-equation=gets.chomp
+puts "1) Quadratic Equation (ax^2+bx+c=0)"
+puts "2) Linear Equation (y=mx+b)"
+puts "3) Absolute Equation (y=x)"
+puts "Please enter the name of the equation you want to solve:"
+answer=gets.chomp.downcase
 
-#Quadratic Equation
-if equation==1 then
-  puts "Remember a quadratic equation should be under the form ax^2+bx+c=0"
-  puts "Please enter a:"
-  a = gets.chomp  
-  a = a.to_i
-  puts "Please enter b:"
-  b = gets.chomp  
-  b = b.to_i
-  puts "Please enter c:"
-  c = gets.chomp  
-  c = c.to_i
-  x=(b*b-4*a*c)
-if a==0
-  puts "This is a linear equation & the answer to this equation is: x=#{-c/b}"
-elsif x>=0
-  ya=Math.sqrt(x)
-  xa=(-b+ya)/(2*a)
-  yb=Math.sqrt(x)
-  xb=(-b-yb)/(2*a)
-  puts "The answers are x=#{xb} and x=#{xa}"
-else
-  puts "This equation can not be solved with the program from now since b^2-4ac is negative."
-end
-
-if a>0
-  puts "This equation will reach it's summit at x(#{-b/2*a};#{(4*a*c-b*b)/(4*a)})"
-elsif a<0
-  puts "This equation will reach it's minimum at x(#{-b/2*a};#{(4*a*c-b*b)/(4*a)})"
-else
-  if b>0
-    puts "This equation has no mimimum nor maximum point."
-  elsif b<0
-  end
-end
-end
+#--------------------------Quadratic Equation (ax^2+bx+c=0)--------------------------#
 
 
-#Linear Equation
-if equation==2 then
-  puts "Remember a linear equation is under the form y=mx+b"
-    puts "Please enter y, if you do not know the value of y type ?"
-    y=gets.chomp
-    if y=="?"
-    Puts "Please enter x, if you do not know this value of both x and y we can not solve the equation:"
-    x=gets.chomp
-    Puts "Please enter m:"
-    a=gets.chomp
-    Puts "Please enter b:"
-    b=gets.chomp
-    puts "The answer to the equation is y= #{m*x+b}"
-    else
-    Puts "Please enter m:"
-    a=gets.chomp
-    Puts "Please enter b:"
-    b=gets.chomp
-    puts "The answer to the equation is x= #{(y-b)/m}"
-    end
-
-#Constant Equation
-if equation==3
-    puts "Remember a constant equation under the form y=c"
-    puts "Please enter c, if you do not know c please enter ?:"
-    c=gets.chom
-    if c=="?"
-    puts "Please enter y; if you do not know both y and c you can not resove this equation."
-    y=gets.chom
-    puts "The answer is y=#{y} for any given c."
-    else
-    puts "The answer is y=#{c} for any given y."
-  end
+if answer == "quadratic" or answer == "quadratic equation" or answer== "1" then
+  puts "Remember, a quadratic equation is in the form 'y=ax^2+bx+c'"
+  puts "Which is needed for the answer"
+  puts "1) x"
+  puts "2) y"
+  puts "3) roots"
+  variableNeeded=gets.chomp.downcase
+    
+  if variableNeeded == "x" or variableNeeded == "1" then
+    puts "What is y equal to?"
+    y = gets.chomp.to_i
+    puts "What is a equal to?"
+    a = gets.chomp.to_i
+    puts "What is b equal to?"
+    b = gets.chomp.to_i
+    puts "What is c equal to?"
+    c = gets.chomp.to_i
+    
+    x = (b*b - 4*a*c) #Determines X from the given information
+    puts "Therefore, x is equal to #{x}."
+  
+  elsif variableNeeded == "y" or variableNeeded == "2" then
+    puts "What is x equal to?"
+    x = gets.chomp.to_i
+    puts "What is a equal to?"
+    a = gets.chomp.to_i
+    puts "What is b equal to?"
+    b = gets.chomp.to_i
+    puts "What is c equal to?"
+    c = gets.chomp.to_i
+    
+    y = (a*x*x + b*x + c) #Determines Y from the given variables
+    puts "Therefore, y is equal to #{y}."
+    
+  elsif variableNeeded == "roots" or variableNeeded == "3" then
+   puts "What is a equal to?"
+   a = gets.chomp.to_i
+   puts "What is b equal to?"
+   b = gets.chomp.to_i
+   puts "What is c equal to?"
+   c = gets.chomp.to_i
+    
+   if (b*b - 4*a*c)<0 then
+     puts "It is not possible to calculate the root of this equation since b^2 - 4*a*c < 0"
+    
+   else
+     root1=(-b+Math.sqrt(b*b - 4*a*c))/(2*a)
+     root2=(-b-Math.sqrt(b*b - 4*a*c))/(2*a)
+     puts "Your two roots are: \n-X=#{root1} \n-X=#{root2}"
+   end
+    
   else
-    puts "Sorry but we can not solve any other equation for now."
+    puts "Sorry, I dont understand what you gave me. Ending Program."
   end
 
-puts "Voila... Please leave feedback & suggestions by tweeting to @PabiGamito"
+#--------------------------Linear Equation (y=mx+b)--------------------------#
+
+elsif answer == "linear" or answer == "linear equation" or answer== "2"
+    puts "Remember a linear equation is in the form 'y=mx+b'"
+    puts "Which variable do you need?"
+    puts "1) x"
+    puts "2) y"
+    puts "3) m"
+    puts "4) b"
+    variableNeeded = gets.chomp.downcase
+    
+    if variableNeeded == "x" or variableNeeded == "1" then #GETS VARIABLES THAT ARE NOT X
+     puts "What is y equal to?"
+     y = gets.chomp.to_i #Gets Y
+     puts "What is the slope (m) of the equation?"
+     m = gets.chomp.to_i #Gets M
+     puts "What is b equal to?"
+     b = gets.chomp.to_i #Gets B
+     
+     x=(y-b)/m #Determines X from the given information
+     puts "Therefore, x is equal to #{x}."
+    
+    elsif variableNeeded == "y" or variableNeeded == "2" then #GETS VARIABLES THAT ARE NOT Y
+     puts "What is x equal to?"
+     x=gets.chomp.to_i #Gets X
+     puts "What is the slope (m) of the equation?"
+     m=gets.chomp.to_i #Gets M
+     puts "What is b equal to?"
+     b=gets.chomp.to_i #Gets B
+     
+     y=m*x+b #Determines Y from the given information
+     puts "Therefore, y is equal to #{y}."
+    
+    elsif variableNeeded == "m" or variableNeeded == "3" then #GETS THE VARIABLE THAT ARE NOT M
+     puts "What is y equal to?"
+     y=gets.chomp.to_i #Gets Y
+     puts "What is x equal to?"
+     x=gets.chomp.to_i #Gets X 
+     puts "What is b equal to?"
+     b=gets.chomp.to_i #Gets B
+     
+     m=(y-b)/x #Determines M from the given information
+     puts "Therefore, m is equal to #{m}"
+    
+    elsif variableNeeded == "b" or variableNeeded == "4" then #GETS THE VARIABLES THAT ARE NOT B
+     puts "What is y equal to?"
+     y=gets.chomp.to_i #Gets Y
+     puts "What is x equal to?"
+     x=gets.chomp.to_i #Gets X
+     puts "What is the slope (m) of the equation?"
+     m=gets.chomp.to_i #Gets M
+     
+     b=y-m*x #Determines B from the given information
+     puts "Therefore, b is equal to #{b}"
+    
+    else
+      puts "Sorry, I dont understand what you gave me. Ending Program." #In case someone doesnt know how to type a single letter...
+    end
+  
+#--------------------------Absolute Value Equation--------------------------# 
+
+elsif answer == "absolute" or answer == "absolute equation" or answer == "3" then
+   puts "Remember a linear equation is in the form 'y=|x-a|+b'"
+   puts "Which variable do you need?"
+   puts "1) y"
+   puts "2) x"
+   puts "3) a"
+   puts "4) b"
+   variableNeeded = gets.chomp.downcase
+   
+  if variableNeeded == "x" or variableNeeded == "2" then #GETS VARIABLES THAT ARE NOT X
+     puts "What is y equal to?"
+     y = gets.chomp.to_i #Gets Y
+     puts "What is a equal to?"
+     a = gets.chomp.to_i #Gets A
+     puts "What is b equal to?"
+     b = gets.chomp.to_i #Gets B
+     
+     x1 = y - a - b
+     x2 = -y + a +b #Determines X from the given information
+     
+     if y = (x1-a).abs + b and y = (x2-a).abs + b  then
+       puts "Therefore, x is equal to #{x1} and #{x2}"
+     elsif y = (x1-a).abs + b then
+       puts "Therefore, x is equal to #{x1}"
+     elsif y = (x2-a).abs + b then
+       puts "Therefore, x is equal to #{x2}."
+     else
+       puts "Sorry, but I cant solve this."
+     end
+    
+  elsif variableNeeded == "y" or variableNeeded == "1" then #GETS VARIABLES THAT ARE NOT Y
+     puts "What is x equal to?"
+     x=gets.chomp.to_i #Gets X
+     puts "What is a equal to?"
+     a=gets.chomp.to_i #Gets A
+     puts "What is b equal to?"
+     b=gets.chomp.to_i #Gets B
+     
+     y = (x - a).abs + b #Determines Y from the given information
+     puts "Therefore, y is equal to #{y}."
+    
+  elsif variableNeeded == "a" or variableNeeded == "3" then #GETS THE VARIABLES THAT ARE NOT A
+     puts "What is y equal to?"
+     y = gets.chomp.to_i #Gets Y
+     puts "What is x equal to?"
+     x = gets.chomp.to_i #Gets X
+     puts "What is b equal to?"
+     b = gets.chomp.to_i #Gets B
+     
+     a1 = y - x - b
+     a2 = y + x - b #Determines A from the given information
+     
+     if y = (x-a1).abs + b and y = (x-a2).abs + b  then
+       puts "Therefore, x is equal to #{a1} and #{a2}"
+     elsif y = (x-a1).abs + b then
+       puts "Therefore, x is equal to #{a1}"
+     elsif y = (x2-a2).abs + b then
+       puts "Therefore, x is equal to #{a2}."
+     else
+       puts "Sorry, but I cant solve this."
+     end
+    
+  elsif variableNeeded == "b" or variableNeeded == "4" then #GETS THE VARIABLES THAT ARE NOT B
+     puts "What is y equal to?"
+     y=gets.chomp.to_i #Gets Y
+     puts "What is x equal to?"
+     x=gets.chomp.to_i #Gets X
+     puts "What is a equal to?"
+     a=gets.chomp.to_i #Gets A
+     
+     b = y - (x - a).abs #Determines B from the given information
+     puts "Therefore, b is equal to #{b}"
+    
+  else
+     puts "Sorry, I dont understand what you gave me. Ending Program." #In case someone doesnt know how to type a single letter...
+  end
+
+else
+  Puts "Sorry, but you messed up... Please answer correctly." #CHECK THIS DOESN"T APPEAR IF YOU TYPE FOR EXAMPLE 45 at the begining.
+end
