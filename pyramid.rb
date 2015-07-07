@@ -18,7 +18,7 @@ def pyramid
   #Creates the pyramid
   while number_of_spaces>=0
     #prints the first half of the pryramid (left)
-    number_of_spaces.times {print " "}
+    number_of_spaces.times {print "  "}
     number_of_blocks.times{print "#"}
     #creates a space in between the left and right side of the pyramid
     print " "
