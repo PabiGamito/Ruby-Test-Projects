@@ -14,6 +14,14 @@
 # # you have to shout BYE three times in a row before the program will end. Make sure to test your program: if you shout BYE 
 # three times, but not in a row, you should still be talking to grandma.
 
+def is_upercase?(char)
+  if char==char.upcase then
+    return "true"
+  else
+    return "false"
+  end
+end
+
 puts "Do you want to start the grandmother simulator?"
 start=gets.chomp
 while start!="YES" #MAKE IS SO IT STARTS EVEN IF YOU PUT YES!!!...
@@ -22,4 +30,12 @@ while start!="YES" #MAKE IS SO IT STARTS EVEN IF YOU PUT YES!!!...
   puts "#{item}"
   start=gets.chomp
 end
-  puts "How was your day?"
+  puts "Ok, so what did you do today?"
+  answer_that_doesnt_matter=gets.chomp
+  while is_upercase?(answer_that_doesnt_matter)=="false"
+  puts "HUH?! SPEAK UP, SONNY!"
+  answer_that_doesnt_matter=gets.chomp
+  end
+  puts "Last time I did that was in #{rand(1930..1999)}"
+  
+  

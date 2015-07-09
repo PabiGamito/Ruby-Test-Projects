@@ -10,3 +10,12 @@ def is_number?(string)
   true if Float(string) rescue false
 end
 
+#Check to see if all characters are upercase or lower case
+char="a string of stuff"
+def is_upercase?()
+  if char==char.upcase then
+    return "true"
+  else
+    return "false"
+  end
+end

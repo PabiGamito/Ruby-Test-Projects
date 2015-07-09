@@ -1,3 +1,12 @@
+#-------------Define all Methods for the equation solver-------------#
+
+#Method that check the input is a number
+def is_num?(string)
+  true if Float(string) rescue false
+end
+
+#Method that removes the variable they have from the array of variable and ask the value of the arrays that are left.
+
 #Equation Selecter Need to make it detect equation
 puts "Is your equation a:"
 puts "1) Quadratic Equation (ax^2+bx+c=0)"
